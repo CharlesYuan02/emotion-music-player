@@ -1,0 +1,33 @@
+@import url(https://fonts.googleapis.com/css2?family=Lato&display=swap);
+
+body{
+   font-family: 'Lato', sans-serif;
+   background-color: #A03232;
+}
+
+.box-theme {
+    background-color: black;
+    color: white;
+}
+
+.content-wrapper {
+    width: 30%;
+    margin: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mood-wrapper {
+    border-radius: 15px;
+    padding: 1 rem 0;
+    width: 400px;
+    margin: 1% 0;
+}
+
+.current-song-wrapper {
+    border-radius: 5px;
+    width: 500px;
+    margin: 1% 0;
+}
