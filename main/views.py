@@ -4,7 +4,7 @@ from main.detect import VideoCamera
 
 
 def index(response):
-    return render(response, 'templates/index.html')
+    return render(response, 'index.html')
 
 
 def gen(cap):
