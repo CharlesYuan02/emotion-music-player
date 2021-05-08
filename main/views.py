@@ -2,9 +2,9 @@ from django.shortcuts import render
 from django.http.response import StreamingHttpResponse
 from main.detect import VideoCamera
 
-
 def index(response):
-    return render(response, 'index.html')
+    expression = VideoCamera().get_frame()[1]
+    return render(response, 'index.html', {"exp": expression})
 
 
 def gen(cap):
