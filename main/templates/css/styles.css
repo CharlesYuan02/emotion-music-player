@@ -1,33 +1,237 @@
 @import url(https://fonts.googleapis.com/css2?family=Lato&display=swap);
 
 body{
-   font-family: 'Lato', sans-serif;
-   background-color: #A03232;
+    height: 100vh;
+    width: 100%;
+    font-family: 'Lato', sans-serif;
+    background-color: #c93232;
 }
 
-.box-theme {
-    background-color: black;
-    color: white;
+button{
+    cursor: pointer;
 }
 
-.content-wrapper {
-    width: 30%;
-    margin: auto;
-    text-align: center;
+.music-container{
+    height: 100vh;
+    width: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
 }
 
-.mood-wrapper {
-    border-radius: 15px;
-    padding: 1 rem 0;
-    width: 400px;
-    margin: 1% 0;
+.current-song{
+    width: 450px;
+    height: 50px;
+    background-color: #333333;
+    margin-bottom: 20px;;
 }
 
-.current-song-wrapper {
-    border-radius: 5px;
-    width: 500px;
-    margin: 1% 0;
+.music-content{
+    position: relative;
+    width: 450px;
+    height: 300px;
+    background-color: #333333;
+    border-width: 8px 4px !important;
+    border: solid;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+#bg-image img{
+    width: 35%;
+    height: 35%;
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+#volume-container{
+    position: relative;
+    top: 10px;
+    width: 100%;
+    height: 15px;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#volume-container img{
+    width: 16px;
+    height: 16px;
+    margin: 0 5px;
+}
+
+.slider{
+    width: 110px;
+    height: 1px !important;
+    -webkit-appearance: none;
+    border-radius: 10px;
+    background-color: #fff;
+    z-index: 100;
+    outline: none;
+    position: relative;
+}
+
+.slider::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+    cursor: pointer;
+    outline: none;
+    transform: scale(1);
+}
+
+.slider:active::-webkit-slider-thumb{
+    transform: scale(1.2);
+}
+
+#music-image{
+    position: relative;
+    width: 100%;
+    height: 215px;
+    z-index: 3;
+}
+
+#circle-image{
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120px;
+    height: 120px;
+    background-color: #333333;
+    border-radius: 25%;
+    overflow: hidden;
+}
+
+#circle-image img{
+    top: 60px;
+    left: 60px;
+}
+
+#music-image img{
+    width: 100%;
+    height: 100%;
+}
+
+#music-title{
+    position: relative;
+    padding: 0 25px;
+    top: 65%;
+    color: #fff;
+}
+
+#music-title h5{
+    color: #fff;
+    font-size: 20px;
+    margin: 20px 0 5px;
+    font-weight: 300;
+    text-align: center;
+    line-height: 1.2;
+}
+
+#currentTime{
+    position: relative;
+    z-index: 3;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 25px;
+    margin-right: 25px;
+    bottom: 70px;
+}
+
+#currentTime span{
+    font-size: 20px;
+}
+
+.seekslider{
+    width: 400px;
+    height: 2px !important;
+    -webkit-appearance: none;
+    border-radius: 10px;
+    background-color: #fff;
+    z-index: 3;
+    outline: none;
+    position: relative;
+    left: 25px;
+    bottom: 70px;
+}
+
+.seekslider::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    width: 10px;
+    height: 10px;
+    background-color: #e62c2f;
+    border-radius: 50%;
+    cursor: pointer;
+    outline: none;
+    transform: scale(1);
+}
+
+.seekslider:active::-webkit-slider-thumb{
+    transform: scale(1.2);
+}
+
+#play-button img{
+    width: 60px;
+    height: 60px;
+    top: 260px;
+    z-index: 5;
+}
+
+#prev-button img{
+    width: 40px;
+    height: 40px;
+    top: 260px;
+    left: 150px;
+    z-index: 5;
+}
+
+#next-button img{
+    width: 40px;
+    height: 40px;
+    top: 260px;
+    left: 300px;
+    z-index: 5;
+}
+
+.repeat-button{
+    width: 50%;
+}
+
+.play{
+    width: 60px;
+    height: 50px;
+    margin: 0 5px;
+}
+
+.play img{
+    width: 100%;
+    height: 100%;
+}
+
+.prev img,
+.next img{
+    width: 20px;
+    height: 20px;
+}
+
+#buttons .repeat{
+    position: absolute;
+    top: 30%;
+    left: 6%;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+#repeat img{
+    width: 16px;
+    height: 16px;
 }
