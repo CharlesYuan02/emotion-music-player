@@ -76,8 +76,8 @@ switch (mood) {
 }
 
 playbtn.addEventListener("click", playPause);
-nextbtn.addEventListener("click", nextSong(mood));
-prevbtn.addEventListener("click", prevSong(mood));
+nextbtn.addEventListener("click", () => {nextSong(mood)});
+prevbtn.addEventListener("click", () => {prevSong(mood)});
 mutebtn.addEventListener("click", mute);
 seekslider.addEventListener("mousedown", function (event) {
     seeking = true;
@@ -291,5 +291,4 @@ function loop() {
         audio.loop = true;
         $("#repeat img").attr("src", "static/imgs/loop1.png");
     }
-}
 }
