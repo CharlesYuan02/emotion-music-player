@@ -4,7 +4,7 @@ body{
     height: 100vh;
     width: 100%;
     font-family: 'Lato', sans-serif;
-    background-image: linear-gradient(to bottom, rgb(255, 0, 0) , rgb(255, 0, 76));;
+    background-image: linear-gradient(to bottom, rgba(137, 170, 75, 1) 0%, rgba(77, 138, 9, 1) 100%);
 }
 
 button{

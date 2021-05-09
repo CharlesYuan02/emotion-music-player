@@ -1,29 +1,16 @@
-let audio, playbtn, nextbtn, prevbtn, mutebtn, title, poster, seekslider, volumeslider, seeking = false, seekto,
+let mood, audio, playbtn, nextbtn, prevbtn, mutebtn, title, poster, seekslider, volumeslider, seeking = false, seekto,
     curtimetext, durtimetext, current_song, dir, playlist, ext, agent, repeat, setvolume, angry_playlist, angry_title,
     angry_poster, happy_playlist, happy_title, happy_poster, calm_playlist, calm_title, calm_poster, sad_playlist,
-    sad_title, sad_poster;
+    sad_title, sad_poster, playlist_index;
 
 dir = "static/songs/"
-playlist = ["ACDC-BackinBlack", "OhTheLarceny-ManonaMission", "LedZeppelin-ImmigrantSong",
-    "WillPharrell-Happy", "Kool&TheGang-Celebration", "RickAstley-NeverGonnaGiveYouUp",
-    "SmashMouth-AllStar", "DJOkawari-SpeedofLight", "BillieEilish-BadGuy",
-    "Adele-Hello", "CelineDion-MyHeartWillGoOn", "GaryJules-MadWorld"];
-
-title = ["ACDC - Back in Black", "Oh The Larceny - Man on a Mission", "Led Zeppelin - Immigrant Song",
-    "Will Pharrell - Happy", "Kool & The Gang - Celebration", "Rick Astley - Never Gonna Give You Up",
-    "Smash Mouth - All Star", "DJ Okawari - Speed of Light", "Billie Eilish - Bad Guy",
-    "Adele - Hello", "Celine Dion - My Heart Will Go On", "Gary Jules - Mad World"];
-
-poster = ["static/song_imgs/back_in_black.jpg", "static/song_imgs/man_on_a_mission.jpg", "static/song_imgs/immigrant_song.jpg",
-    "static/song_imgs/happy.jpg", "static/song_imgs/celebration.jpg", "static/song_imgs/never_gonna_give_you_up.jpg", "static/song_imgs/all_star.jpeg",
-    "static/song_imgs/speed_of_light.jpg", "static/song_imgs/bad_guy.jpg", "static/song_imgs/hello.jpg", "static/song_imgs/my_heart_will_go_on.jpg", "static/song_imgs/mad_world.jpg"];
 
 angry_playlist = ["ACDC-BackinBlack", "OhTheLarceny-ManonaMission", "LedZeppelin-ImmigrantSong"];
 angry_title = ["ACDC - Back in Black", "Oh The Larceny - Man on a Mission", "Led Zeppelin - Immigrant Song"];
 angry_poster = ["static/song_imgs/back_in_black.jpg", "static/song_imgs/man_on_a_mission.jpg", "static/song_imgs/immigrant_song.jpg"];
 
 happy_playlist = ["WillPharrell-Happy", "Kool&TheGang-Celebration", "RickAstley-NeverGonnaGiveYouUp"];
-happy_title = ["static/song_imgs/back_in_black.jpg", "static/song_imgs/man_on_a_mission.jpg", "static/song_imgs/immigrant_song.jpg"];
+happy_title = ["Will Pharrell - Happy", "Kool & The Gang - Celebration", "Rick Astley - Never Gonna Give You Up"];
 happy_poster = ["static/song_imgs/happy.jpg", "static/song_imgs/celebration.jpg", "static/song_imgs/never_gonna_give_you_up.jpg"];
 
 calm_playlist = ["SmashMouth-AllStar", "DJOkawari-SpeedofLight", "BillieEilish-BadGuy"];
@@ -51,8 +38,6 @@ repeat = document.getElementById("repeat");
 audio = new Audio();
 audio.loop = false;
 
-let mood = "Calm";
-
 Webcam.set({
     width: 320,
     height: 240,
@@ -61,32 +46,9 @@ Webcam.set({
 });
 Webcam.attach('#imageCapture');
 
-switch (mood) {
-    case "Angry":
-        playlist_index = 0;
-        audio.src = dir + angry_playlist[0] + ext;
-        current_song.innerHTML = angry_title[playlist_index];
-        break;
-    case "Happy":
-        playlist_index = 0;
-        audio.src = dir + happy_playlist[0] + ext;
-        current_song.innerHTML = happy_title[playlist_index];
-        break;
-    case "Calm":
-        playlist_index = 0;
-        audio.src = dir + calm_playlist[0] + ext;
-        current_song.innerHTML = calm_title[playlist_index];
-        break;
-    case "Sad":
-        playlist_index = 0;
-        audio.src = dir + sad_playlist[0] + ext;
-        current_song.innerHTML = sad_title[playlist_index];
-        break;
-}
-
 playbtn.addEventListener("click", playPause);
-nextbtn.addEventListener("click", () => {nextSong(mood)});
-prevbtn.addEventListener("click", () => {prevSong(mood)});
+nextbtn.addEventListener("click", () => { nextSong(mood) });
+prevbtn.addEventListener("click", () => { prevSong(mood) });
 mutebtn.addEventListener("click", mute);
 seekslider.addEventListener("mousedown", function (event) {
     seeking = true;
@@ -150,7 +112,6 @@ function playPause() {
 
 function nextSong(mood) {
     playlist_index++;
-    console.log(playlist_index);
     switch (mood) {
         case "Angry":
             if (playlist_index > angry_playlist.length - 1) {
@@ -178,7 +139,6 @@ function nextSong(mood) {
 
 function prevSong(mood) {
     playlist_index--;
-    console.log(playlist_index);
     switch (mood) {
         case "Angry":
             if (playlist_index < 0) {
@@ -304,10 +264,10 @@ function loop() {
 
 document.querySelector('#test').addEventListener('click', function () {
     getExpression();
-});    
+});
 
 const getExpression = () => {
-    Webcam.snap( image_uri => {
+    Webcam.snap(image_uri => {
         console.log(image_uri)
         fetch('/expression', {
             method: 'POST',
@@ -315,13 +275,45 @@ const getExpression = () => {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({image_uri: image_uri})
-        }).then( response => {
+            body: JSON.stringify({ image_uri: image_uri })
+        }).then(response => {
             return response.json();
-        }).then( res => {
+        }).then(res => {
             mood = res.mood;
+            mood = mood.charAt(0).toUpperCase() + mood.slice(1);
             document.querySelector('#status').innerHTML = `Current Mood: ${mood}`;
-            // do other stuff with mood here (e.g. determine the song on a mood change)
-        });             
+            switch (mood) {
+                case "Angry":
+                    playlist_index = 0;
+                    audio.src = dir + angry_playlist[0] + ext;
+                    current_song.innerHTML = angry_title[playlist_index];
+                    $("#circle-image img").attr("src", angry_poster[playlist_index]);
+                    $("body").css("background-image", "linear-gradient(to bottom, rgb(255, 0, 0) , rgb(255, 0, 76))");
+                    break;
+                case "Happy":
+                    playlist_index = 0;
+                    audio.src = dir + happy_playlist[0] + ext;
+                    current_song.innerHTML = happy_title[playlist_index];
+                    $("#circle-image img").attr("src", happy_poster[playlist_index]);
+                    $("body").css("background-image", "linear-gradient(to bottom, rgba(188, 203, 7, 1) 0%, rgba(219, 203, 88, 1) 100%)");
+                    break;
+                case "Calm":
+                    playlist_index = 0;
+                    audio.src = dir + calm_playlist[0] + ext;
+                    current_song.innerHTML = calm_title[playlist_index];
+                    $("#circle-image img").attr("src", calm_poster[playlist_index]);
+                    $("body").css("background-image", "linear-gradient(to bottom, rgba(137, 170, 75, 1) 0%, rgba(77, 138, 9, 1) 100%)");
+                    break;
+                case "Sad":
+                    playlist_index = 0;
+                    audio.src = dir + sad_playlist[0] + ext;
+                    current_song.innerHTML = sad_title[playlist_index];
+                    $("#circle-image img").attr("src", sad_poster[playlist_index]);
+                    $("body").css("background-image", "linear-gradient(to bottom, rgba(14, 9, 121, 1) 69%, rgba(0, 189, 255, 1) 100%)");
+                    break;
+            }
+        });
     });
 }
+
+setTimeout(() => { getExpression() }, 2000);
