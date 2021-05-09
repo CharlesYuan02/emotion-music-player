@@ -20,11 +20,30 @@ button{
     align-items: center;
 }
 
+.current-mood{
+    width: 350px;
+    height: 75px;
+    background-color: #333333;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.current-mood h1{
+    color: white;
+    font-size: 210%;
+}
+
 .current-song{
     width: 450px;
     height: 50px;
     background-color: #333333;
-    margin-bottom: 20px;;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+.current-song h5{
+    color: white;
+    font-size: 130%;
 }
 
 .music-content{
@@ -32,9 +51,7 @@ button{
     width: 450px;
     height: 300px;
     background-color: #333333;
-    border-width: 8px 4px !important;
-    border: solid;
-    border-radius: 20px;
+    border-radius: 10px;
     overflow: hidden;
 }
 
@@ -100,7 +117,7 @@ button{
 
 #circle-image{
     position: absolute;
-    top: 30%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 120px;
@@ -182,14 +199,14 @@ button{
 #play-button img{
     width: 60px;
     height: 60px;
-    top: 260px;
+    top: 250px;
     z-index: 5;
 }
 
 #prev-button img{
     width: 40px;
     height: 40px;
-    top: 260px;
+    top: 250px;
     left: 150px;
     z-index: 5;
 }
@@ -197,41 +214,24 @@ button{
 #next-button img{
     width: 40px;
     height: 40px;
-    top: 260px;
+    top: 250px;
     left: 300px;
     z-index: 5;
 }
 
-.repeat-button{
-    width: 50%;
-}
-
-.play{
-    width: 60px;
+#repeat-button img{
+    width: 50px;
     height: 50px;
-    margin: 0 5px;
+    top: 250px;
+    left: 400px;
+    z-index: 5;
 }
 
-.play img{
-    width: 100%;
-    height: 100%;
+#volume-high-button img{
+    
+    z-index: 5;
 }
 
-.prev img,
-.next img{
-    width: 20px;
-    height: 20px;
-}
-
-#buttons .repeat{
-    position: absolute;
-    top: 30%;
-    left: 6%;
-    font-size: 15px;
-    cursor: pointer;
-}
-
-#repeat img{
-    width: 16px;
-    height: 16px;
+#volume-low-button img{
+    z-index: 5;
 }
