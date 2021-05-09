@@ -12,9 +12,9 @@ title = ["ACDC - Back in Black", "Oh The Larceny - Man on a Mission", "Led Zeppe
     "Smash Mouth - All Star", "DJ Okawari - Speed of Light", "Billie Eilish - Bad Guy",
     "Adele - Hello", "Celine Dion - My Heart Will Go On", "Gary Jules - Mad World"];
 
-poster = ["song_imgs/back_in_black.jpg", "song_imgs/man_on_a_mission.jpg", "song_imgs/immigrant_song.jpg",
-    "song_imgs/happy.jpg", "song_imgs/celebration.jpg", "song_imgs/never_gonna_give_you_up.jpg", "song_imgs/all_star.jpg",
-    "speed_of_light.jpg", "song_imgs/bad_guy.jpg", "song_imgs/hello.jpg", "song_imgs/my_heart_will_go_on.jpg", "song_imgs/mad_world.jpg"];
+poster = ["static/song_imgs/back_in_black.jpg", "static/song_imgs/man_on_a_mission.jpg", "static/song_imgs/immigrant_song.jpg",
+    "static/song_imgs/happy.jpg", "static/song_imgs/celebration.jpg", "static/song_imgs/never_gonna_give_you_up.jpg", "static/song_imgs/all_star.jpg",
+    "static/song_imgs/speed_of_light.jpg", "static/song_imgs/bad_guy.jpg", "static/song_imgs/hello.jpg", "static/song_imgs/my_heart_will_go_on.jpg", "static/song_imgs/mad_world.jpg"];
 
 ext = ".mp3";
 agent = navigator.userAgent.toLowerCase()
@@ -63,8 +63,7 @@ repeat.addEventListener("click", loop);
 
 function fetchMusicDetails() {
     $("#playpausebtn img").attr("src", "static/imgs/pause.png");
-    $("#bgImage").attr("src", poster[playlist_index]);
-    $("image").attr("src", poster[playlist_index]);
+    $("#circle-image img").attr("src", poster[playlist_index]);
 
     current_song.innerHTML = title[playlist_index];
 
@@ -75,7 +74,6 @@ function fetchMusicDetails() {
 function playPause() {
     if (audio.paused) {
         audio.play();
-        console.log(playlist_index);
         $("#playpausebtn img").attr("src", "static/imgs/pause.png");
     } else {
         audio.pause();
@@ -97,6 +95,16 @@ function prevSong() {
         playlist_index = playlist.length - 1;
     }
     fetchMusicDetails();
+}
+
+function mute() {
+    if (audio.muted) {
+        audio.muted = false;
+        $("#mutebtn img").attr("src", "static/imgs/speaker.png");
+    } else {
+        audio.muted = true;
+        $("#mutebtn img").attr("src", "static/imgs/mute.png");
+    }
 }
 
 function seek(event) {
@@ -155,9 +163,9 @@ function switchTrack() {
 function loop() {
     if (audio.loop) {
         audio.loop = false;
-        $("#repeat img").attr("src", "imgs/loop.png");
+        $("#repeat img").attr("src", "static/imgs/loop.png");
     } else {
         audio.loop = true;
-        $("#repeat img").attr("src", "imgs/loop1.png");
+        $("#repeat img").attr("src", "static/imgs/loop1.png");
     }
 }
