@@ -1,5 +1,5 @@
-let audio, playbtn, nextbtn, prevbtn, title, poster, seekslider, volumeslider, seeking = false, seekto,
-    curtimetext, durtimetext, current_song, dir, playlist, ext, agent, repeat;
+let audio, playbtn, nextbtn, prevbtn, mutebtn, title, poster, seekslider, volumeslider, seeking = false, seekto,
+    curtimetext, durtimetext, current_song, dir, playlist, ext, agent, repeat, setvolume;
 
 dir = "songs/"
 playlist = ["ACDC-BackinBlack", "OhTheLarceny-ManonaMission", "LedZeppelin-ImmigrantSong",
@@ -13,18 +13,16 @@ title = ["ACDC - Back in Black", "Oh The Larceny - Man on a Mission", "Led Zeppe
     "Adele - Hello", "Celine Dion - My Heart Will Go On", "Gary Jules - Mad World"];
 
 poster = ["song_imgs/back_in_black.jpg", "song_imgs/man_on_a_mission.jpg", "song_imgs/immigrant_song.jpg",
-    "song_imgs/happy.jpg", "song_imgs/celebration.jpg", "song_imgs/never_gonna_give_you_up.jpg", "song_imgs/all_star.jpg",
-    "speed_of_light.jpg", "song_imgs/bad_guy.jpg", "song_imgs/hello.jpg", "song_imgs/my_heart_will_go_on.jpg", "song_imgs/mad_world.jpg"];
+    "song_imgs/happy.jpg", "song_imgs/celebration.jpg", "song_imgs/never_gonna_give_you_up.jpg", "song_imgs/all_star.jpeg",
+    "song_imgs/speed_of_light.jpg", "song_imgs/bad_guy.jpg", "song_imgs/hello.jpg", "song_imgs/my_heart_will_go_on.jpg", "song_imgs/mad_world.jpg"];
 
 ext = ".mp3";
 agent = navigator.userAgent.toLowerCase()
-if (agent.indexOf("firefox" != -1 || agent.indexOf("opera") != -1)) {
-    ext = ".ogg";
-}
 
 playbtn = document.getElementById("playpausebtn");
 nextbtn = document.getElementById("nextbtn");
 prevbtn = document.getElementById("prevbtn");
+mutebtn = document.getElementById("mutebtn");
 seekslider = document.getElementById("seekslider");
 volumeslider = document.getElementById("volumeslider");
 curtimetext = document.getElementById("curtimetext");
@@ -43,6 +41,7 @@ current_song.innerHTML = title[playlist_index];
 playbtn.addEventListener("click", playPause);
 nextbtn.addEventListener("click", nextSong);
 prevbtn.addEventListener("click", prevSong);
+mutebtn.addEventListener("click", mute);
 seekslider.addEventListener("mousedown", function (event) {
     seeking = true;
     seek(event);
@@ -65,8 +64,7 @@ repeat.addEventListener("click", loop);
 
 function fetchMusicDetails() {
     $("#playpausebtn img").attr("src", "imgs/pause.png");
-    $("#bgImage").attr("src", poster[playlist_index]);
-    $("image").attr("src", poster[playlist_index]);
+    $("#circle-image img").attr("src", poster[playlist_index]);
 
     current_song.innerHTML = title[playlist_index];
 
@@ -100,6 +98,16 @@ function prevSong() {
     fetchMusicDetails();
 }
 
+function mute() {
+    if (audio.muted) {
+        audio.muted = false;
+        $("#mutebtn img").attr("src", "imgs/speaker.png");
+    } else {
+        audio.muted = true;
+        $("#mutebtn img").attr("src", "imgs/mute.png");
+    }
+}
+
 function seek(event) {
     if (audio.duration == 0) {
         null
@@ -118,12 +126,12 @@ function setVolume() {
 
 function seektimeupdate() {
     if (audio.duration) {
-        let temp = audio.currentTime * (100 / audio.duration);
-        seekslider.value = temp;
-        var curmins = Math.floor(audio.currentTime / 60);
-        var cursecs = Math.floor(audio.currentTime - curmins * 60);
-        var durmins = Math.floor(audio.duration / 60);
-        var dursecs = Math.floor(audio.duration - durmins * 60);
+        let nt = audio.currentTime * (100 / audio.duration);
+        seekslider.value = nt;
+        let curmins = Math.floor(audio.currentTime / 60);
+        let cursecs = Math.floor(audio.currentTime - curmins * 60);
+        let durmins = Math.floor(audio.duration / 60);
+        let dursecs = Math.floor(audio.duration - durmins * 60);
         if (cursecs < 10) {
             cursecs = "0" + cursecs
         }
