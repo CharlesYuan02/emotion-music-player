@@ -7,13 +7,17 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emotion-Based Music Player</title>
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 
 <body>
     <div class="music-container">
+        <div class="current-mood">
+            <h1 id="status">Current Mood: Angry</h1>
+        </div>
+
         <div class="current-song">
-            <div id="music-title">
+            <div class="current-song-2">
                 <h5 id="current_song"></h5>
             </div>
         </div>
@@ -22,14 +26,20 @@
             <div id="bg-image">
 
                 <div id="volume-container">
-                    <img src="{% static 'imgs/volume-low.png' %}" id="volume-down">
                     <input type="range" class="slider" id="volumeslider" min="0" max="100" value="100" step="1">
-                    <img src="{% static 'imgs/volume-high.png' %}" id="volume-up">
+                </div>
+
+                <div id="volume-low-button">
+                    <img src="imgs/volume-low.png" id="volume-down">
+                </div>
+
+                <div id="volume-high-button">
+                    <img src="imgs/volume-high.png" id="volume-up">
                 </div>
 
                 <div id="music-image">
                     <div id="circle-image">
-                        <img src="{% static 'song_imgs/all_star.jpeg' %}" alt="" id="image">
+                        <img src="song_imgs/back_in_black.jpg" alt="">
                     </div>
                 </div>
 
@@ -38,20 +48,26 @@
                     <span id="durtimetext">00:00</span>
                 </div>
 
-                <input type="range" class="seekslider" id="seekslider" min="0" max="100" value="0" step="1">
+                <div id="mute-button">
+                    <button id="mutebtn" style="background: transparent; border: none;"><img src="imgs/speaker.png" alt=""></button>
+                </div>
+
+                <div id="seek-container">
+                    <input type="range" class="seekslider" id="seekslider" min="0" max="100" value="0" step="1">
+                </div>
 
                 <div id="buttons">
                     <div id="repeat-button">
-                        <button class="repeat" id="repeat"><img src="{% static 'imgs/loop.png' %}" alt=""></button>
+                        <button class="rep" id="repeat" style="background: transparent; border: none;"><img src="imgs/loop.png" alt=""></button>
                     </div>
                     <div id="prev-button">
-                        <button class="prev" id="prevbtn"><img src="{% static 'imgs/prev_song.png' %}" alt=""></button>
+                        <button class="prev" id="prevbtn"><img src="imgs/prev_song.png" alt=""></button>
                     </div>
                     <div id="play-button">
-                        <button class="play" id="playpausebtn"><img src="{% static 'imgs/play.png' %}" alt=""></button>
+                        <button class="play" id="playpausebtn"><img src="imgs/play.png" alt=""></button>
                     </div>
                     <div id="next-button">
-                        <button class="next" id="nextbtn"><img src="{% static 'imgs/next_song.png' %}" alt=""></button>
+                        <button class="next" id="nextbtn"><img src="imgs/next_song.png" alt=""></button>
                     </div>
                 </div>
             </div>
@@ -64,87 +80,6 @@
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="js/main.js"></script>
-</body>
-
-</html>
-            <!--Bottom icons-->
-            <div class="bottom-icons-wrapper">
-
-                <!--On click, bring up volume adjustment bar, allow volume adjustment-->
-                <!--If bar is all the way down, switch icon to mute.png-->
-                <!--If icon is mute.png and clicked again, it remains mute.png-->
-                <div class="volume-button-wrapper">
-                    <img src="imgs/volume-low.png" alt="" id="volume-down">
-                    <input type="range" class="slider" id="volumeslider" min="0" max="100" value="100" step="1">
-                    <img src="imgs/volume-high.png" alt="" id="volume-up">
-                </div>
-
-                <!--On click, play previous song for current mood-->
-                <!--Both this and the next button should switch the album img, start and end times, reset progress bar-->
-                <div class="prev-button-wrapper">
-                    <button id="prev_button"></button>
-                </div>
-
-                <!--On click, play next song for current mood-->
-                <div class="next-button-wrapper">
-                    <button id="next_button"><img src="imgs/next_song.png"></button>
-                </div>
-
-                <!--Just displays current play time-->
-                <div class="current-time">
-                    <span id="curtimetext">00:00</span>
-                    <span id="durtimetext">00:00</span>
-                </div>
-
-                <!--Progress bar for song-->
-                <input type="range" class="seekslider" id="seekslider" min="0" max="100" value="0" step="1">
-
-                <div id="buttons">
-                    <!--Loop button-->
-                    <button class="repeat" id="repeat">
-                        <img src="imgs/loop.png" alt="">
-                    </button>
-
-                    <!--Play/pause button-->
-                    <button class="play" id="playpausebtn">
-                        <img src="imgs/play.png" alt="">
-                    </button>
-
-                    <!--Next song-->
-                    <button class="next" id="nextbtn">
-                        <img src="imgs/next_song.png" alt="">
-                    </button>
-
-                    <!--Prev song-->
-                    <button class="prev" id="prevbtn">
-                        <img src="imgs/prev_song.png" alt="">
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <!--Detect New Mood button-->
-        <div class=" detect-new-mood-wrapper">
-            <!--Overlay button on black box on white box-->
-            <div class="white-box-wrapper">
-            </div>
-            <div class="black-box-wrapper">
-            </div>
-            <div class="new-mood-button-wrapper">
-                <button id="new_mood_button">Detect New Mood</button>
-            </div>
-        </div>
-
-    </div>
-
-    <div id="imageCapture" style = "display: none"></div>
-
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.js"></script>
-
-    <script type="text/javascript" src="{% static 'js/moodRequest.js' %}"></script>
-
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="{% static 'js/main.js' %}"></script>
 </body>
 
 </html>
