@@ -1,7 +1,7 @@
 let audio, playbtn, nextbtn, prevbtn, title, poster, seekslider, volumeslider, seeking = false, seekto,
     curtimetext, durtimetext, current_song, dir, playlist, ext, agent, repeat;
 
-dir = "songs/"
+dir = "static/songs/"
 playlist = ["ACDC-BackinBlack", "OhTheLarceny-ManonaMission", "LedZeppelin-ImmigrantSong",
     "WillPharrell-Happy", "Kool&TheGang-Celebration", "RickAstley-NeverGonnaGiveYouUp",
     "SmashMouth-AllStar", "DJOkawari-SpeedofLight", "BillieEilish-BadGuy",
@@ -18,9 +18,7 @@ poster = ["song_imgs/back_in_black.jpg", "song_imgs/man_on_a_mission.jpg", "song
 
 ext = ".mp3";
 agent = navigator.userAgent.toLowerCase()
-if (agent.indexOf("firefox" != -1 || agent.indexOf("opera") != -1)) {
-    ext = ".ogg";
-}
+
 
 playbtn = document.getElementById("playpausebtn");
 nextbtn = document.getElementById("nextbtn");
@@ -65,7 +63,7 @@ repeat.addEventListener("click", loop);
 
 function fetchMusicDetails() {
     $("#playpausebtn img").attr("src", "imgs/pause.png");
-    $("#bgImage").attr("src", poster[playlist_index]);
+    $("#bgImage").attr("src", "static/" + poster[playlist_index]);
     $("image").attr("src", poster[playlist_index]);
 
     current_song.innerHTML = title[playlist_index];
