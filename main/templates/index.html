@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
 
@@ -5,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Emotion-Based Music Player</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 
 <body>
@@ -136,7 +138,6 @@
     </div>
 
     <!--Image feed, if needed-->
-    <img src="{% url 'video_feed' %}">
 
     <!--Problem is the expression variable isn't being passed to here properly-->
     <script type="text/javascript">
