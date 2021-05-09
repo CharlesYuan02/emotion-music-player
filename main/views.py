@@ -9,9 +9,8 @@ def index(request):
 
 @csrf_exempt
 def getExpression(request):
-    # uri = request.POST.get('image_uri', '')
-    # expression = getExpression(uri)
-    # return JsonResponse({"mood": mood})
-    pass
+    uri = request.POST.get('image_uri', '')
+    expression = getExpression(uri)
+    return JsonResponse({"mood": mood})
 
 
