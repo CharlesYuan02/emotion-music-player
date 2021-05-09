@@ -30,16 +30,16 @@
                 </div>
 
                 <div id="volume-low-button">
-                    <img src="{% static imgs/volume-low.png %}" id="volume-down">
+                    <img src="{% static 'imgs/volume-low.png' %}" id="volume-down">
                 </div>
 
                 <div id="volume-high-button">
-                    <img src="{% static imgs/volume-high.png %}" id="volume-up">
+                    <img src="{% static 'imgs/volume-high.png' %}" id="volume-up">
                 </div>
 
                 <div id="music-image">
                     <div id="circle-image">
-                        <img src="{% static song_imgs/back_in_black.jpg %}" alt="">
+                        <img src="{% static 'song_imgs/back_in_black.jpg' %}" alt="">
                     </div>
                 </div>
 
@@ -49,7 +49,7 @@
                 </div>
 
                 <div id="mute-button">
-                    <button id="mutebtn" style="background: transparent; border: none;"><img src="{% static imgs/speaker.png %}" alt=""></button>
+                    <button id="mutebtn" style="background: transparent; border: none;"><img src="{% static 'imgs/speaker.png' %}" alt=""></button>
                 </div>
 
                 <div id="seek-container">
@@ -58,16 +58,16 @@
 
                 <div id="buttons">
                     <div id="repeat-button">
-                        <button class="rep" id="repeat" style="background: transparent; border: none;"><img src="{% static imgs/loop.png %}" alt=""></button>
+                        <button class="rep" id="repeat" style="background: transparent; border: none;"><img src="{% static 'imgs/loop.png' %}" alt=""></button>
                     </div>
                     <div id="prev-button">
-                        <button class="prev" id="prevbtn"><img src="{% static imgs/prev_song.png %}" alt=""></button>
+                        <button class="prev" id="prevbtn"><img src="{% static 'imgs/prev_song.png' %}" alt=""></button>
                     </div>
                     <div id="play-button">
-                        <button class="play" id="playpausebtn"><img src="{% static imgs/play.png %}" alt=""></button>
+                        <button class="play" id="playpausebtn"><img src="{% static 'imgs/play.png' %}" alt=""></button>
                     </div>
                     <div id="next-button">
-                        <button class="next" id="nextbtn"><img src="{% static imgs/next_song.png %}" alt=""></button>
+                        <button class="next" id="nextbtn"><img src="{% static 'imgs/next_song.png' %}" alt=""></button>
                     </div>
                 </div>
             </div>
@@ -77,8 +77,8 @@
     <!--Problem is the expression variable isn't being passed to here properly-->
     <div id='imageCapture' style='display: none'></div>
 
-    <script src="{% static js/main.js %}"></script>
-    <script type="text/javascript" src="{% static https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.js %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script type="text/javascript" src="{% static 'https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.js' %}"></script>
     <script src="{% static 'js/main.js' %}"></script>
 
 </body>
