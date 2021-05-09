@@ -3,5 +3,5 @@ from main import views
 
 urlpatterns = [
     path('', views.index, name="index"),
-    #path("expression", views.getExpression, name="expression")
+    path("expression", views.getExpression, name="expression")
 ]

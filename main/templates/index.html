@@ -22,14 +22,14 @@
             <div id="bg-image">
 
                 <div id="volume-container">
-                    <img src="imgs/volume-low.png" id="volume-down">
+                    <img src="{% static 'imgs/volume-low.png' %}" id="volume-down">
                     <input type="range" class="slider" id="volumeslider" min="0" max="100" value="100" step="1">
-                    <img src="imgs/volume-high.png" id="volume-up">
+                    <img src="{% static 'imgs/volume-high.png' %}" id="volume-up">
                 </div>
 
                 <div id="music-image">
                     <div id="circle-image">
-                        <img src="song_imgs/all_star.jpeg" alt="" id="image">
+                        <img src="{% static 'song_imgs/all_star.jpeg' %}" alt="" id="image">
                     </div>
                 </div>
 
@@ -42,16 +42,16 @@
 
                 <div id="buttons">
                     <div id="repeat-button">
-                        <button class="repeat" id="repeat"><img src="imgs/loop.png" alt=""></button>
+                        <button class="repeat" id="repeat"><img src="{% static 'imgs/loop.png' %}" alt=""></button>
                     </div>
                     <div id="prev-button">
-                        <button class="prev" id="prevbtn"><img src="imgs/prev_song.png" alt=""></button>
+                        <button class="prev" id="prevbtn"><img src="{% static 'imgs/prev_song.png' %}" alt=""></button>
                     </div>
                     <div id="play-button">
-                        <button class="play" id="playpausebtn"><img src="imgs/play.png" alt=""></button>
+                        <button class="play" id="playpausebtn"><img src="{% static 'imgs/play.png' %}" alt=""></button>
                     </div>
                     <div id="next-button">
-                        <button class="next" id="nextbtn"><img src="imgs/next_song.png" alt=""></button>
+                        <button class="next" id="nextbtn"><img src="{% static 'imgs/next_song.png' %}" alt=""></button>
                     </div>
                 </div>
             </div>
@@ -137,17 +137,14 @@
 
     </div>
 
-    <!--Image feed, if needed-->
+    <div id="imageCapture" style = "display: none"></div>
 
-    <!--Problem is the expression variable isn't being passed to here properly-->
-    <script type="text/javascript">
-        setInterval(function () {
-            document.getElementById("status").innerHTML = "Current Mood: {{exp}}";
-        }, 100);
-    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.js"></script>
+
+    <script type="text/javascript" src="{% static 'js/moodRequest.js' %}"></script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="js/main.js"></script>
+    <script src="{% static 'js/main.js' %}"></script>
 </body>
 
 </html>
