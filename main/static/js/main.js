@@ -1,4 +1,4 @@
-let audio, playbtn, nextbtn, prevbtn, title, poster, seekslider, volumeslider, seeking = false, seekto,
+let audio, playbtn, nextbtn, prevbtn, mutebtn, title, poster, seekslider, volumeslider, seeking = false, seekto,
     curtimetext, durtimetext, current_song, dir, playlist, ext, agent, repeat, setvolume;
 
 dir = "static/songs/"
@@ -23,6 +23,7 @@ agent = navigator.userAgent.toLowerCase()
 playbtn = document.getElementById("playpausebtn");
 nextbtn = document.getElementById("nextbtn");
 prevbtn = document.getElementById("prevbtn");
+mutebtn = document.getElementById("mutebtn");
 seekslider = document.getElementById("seekslider");
 volumeslider = document.getElementById("volumeslider");
 curtimetext = document.getElementById("curtimetext");
@@ -41,6 +42,7 @@ current_song.innerHTML = title[playlist_index];
 playbtn.addEventListener("click", playPause);
 nextbtn.addEventListener("click", nextSong);
 prevbtn.addEventListener("click", prevSong);
+mutebtn.addEventListener("click", mute);
 seekslider.addEventListener("mousedown", function (event) {
     seeking = true;
     seek(event);
