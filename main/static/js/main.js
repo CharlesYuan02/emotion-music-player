@@ -1,5 +1,5 @@
 let audio, playbtn, nextbtn, prevbtn, title, poster, seekslider, volumeslider, seeking = false, seekto,
-    curtimetext, durtimetext, current_song, dir, playlist, ext, agent, repeat;
+    curtimetext, durtimetext, current_song, dir, playlist, ext, agent, repeat, setvolume;
 
 dir = "static/songs/"
 playlist = ["ACDC-BackinBlack", "OhTheLarceny-ManonaMission", "LedZeppelin-ImmigrantSong",
@@ -62,8 +62,8 @@ repeat.addEventListener("click", loop);
 
 
 function fetchMusicDetails() {
-    $("#playpausebtn img").attr("src", "imgs/pause.png");
-    $("#bgImage").attr("src", "static/" + poster[playlist_index]);
+    $("#playpausebtn img").attr("src", "static/imgs/pause.png");
+    $("#bgImage").attr("src", poster[playlist_index]);
     $("image").attr("src", poster[playlist_index]);
 
     current_song.innerHTML = title[playlist_index];
@@ -75,10 +75,11 @@ function fetchMusicDetails() {
 function playPause() {
     if (audio.paused) {
         audio.play();
-        $("#playpausebtn img").attr("src", "imgs/pause.png");
+        console.log(playlist_index);
+        $("#playpausebtn img").attr("src", "static/imgs/pause.png");
     } else {
         audio.pause();
-        $("#playpausebtn img").attr("src", "imgs/play.png");
+        $("#playpausebtn img").attr("src", "static/imgs/play.png");
     }
 }
 
