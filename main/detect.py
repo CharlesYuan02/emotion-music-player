@@ -14,7 +14,7 @@ import io
 
 haar_cascade = cv2.CascadeClassifier(
 cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
-classifier = load_model("C:/Users/dulha/Desktop/Github_Repos/emotion-music-player/main/emotion_classifier.h5")
+classifier = load_model("emotion_classifier.h5")
 classes = ["Angry", "Happy", "Calm", "Sad", "Surprise"]
 expression = "None"
 
