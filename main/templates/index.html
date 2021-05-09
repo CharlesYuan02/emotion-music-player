@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-{% load static %}
 <html>
 
 <head>
@@ -10,29 +9,62 @@
 </head>
 
 <body>
-    <!--Center align all the stuff-->
-    <div class="content-wrapper">
-
-        <!--Current Mood: etc-->
-        <div class="mood-wrapper box-theme">
-            <h1 id="status"></h1>
-        </div>
-
-
-        <!--Now Playing: etc-->
-        <div class="current-song-wrapper">
-            <h1 id="current_song"></h1>
-        </div>
-
-        <!--Stuff in bottom rectangle-->
-        <div class="music-player-wrapper">
-
-            <!--Album img-->
-            <div class="album-img-wrapper">
-                <!--Allow this to be altered as song changes-->
-                <img src="song_imgs/speed_of_light.jpg">
+    <div class="music-container">
+        <div class="current-song">
+            <div id="music-title">
+                <h5 id="current_song"></h5>
             </div>
+        </div>
 
+        <div class="music-content">
+            <div id="bg-image">
+
+                <div id="volume-container">
+                    <img src="imgs/volume-low.png" id="volume-down">
+                    <input type="range" class="slider" id="volumeslider" min="0" max="100" value="100" step="1">
+                    <img src="imgs/volume-high.png" id="volume-up">
+                </div>
+
+                <div id="music-image">
+                    <div id="circle-image">
+                        <img src="song_imgs/all_star.jpeg" alt="" id="image">
+                    </div>
+                </div>
+
+                <div id="currentTime">
+                    <span id="curtimetext">00:00</span>
+                    <span id="durtimetext">00:00</span>
+                </div>
+
+                <input type="range" class="seekslider" id="seekslider" min="0" max="100" value="0" step="1">
+
+                <div id="buttons">
+                    <div id="repeat-button">
+                        <button class="repeat" id="repeat"><img src="imgs/loop.png" alt=""></button>
+                    </div>
+                    <div id="prev-button">
+                        <button class="prev" id="prevbtn"><img src="imgs/prev_song.png" alt=""></button>
+                    </div>
+                    <div id="play-button">
+                        <button class="play" id="playpausebtn"><img src="imgs/play.png" alt=""></button>
+                    </div>
+                    <div id="next-button">
+                        <button class="next" id="nextbtn"><img src="imgs/next_song.png" alt=""></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Problem is the expression variable isn't being passed to here properly-->
+    <script type="text/javascript">
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
             <!--Bottom icons-->
             <div class="bottom-icons-wrapper">
 
