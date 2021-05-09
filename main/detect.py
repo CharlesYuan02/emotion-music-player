@@ -8,23 +8,28 @@ import urllib.request
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.image import img_to_array
 from tensorflow.keras.preprocessing import image
+import base64
+from imageio import imread
+import io
 
 haar_cascade = cv2.CascadeClassifier(
 cv2.data.haarcascades + "haarcascade_frontalface_default.xml")
-classifier = load_model("emotion_classifier.h5")
-classes = ["Angry", "Happy", "Neutral", "Sad", "Surprise"]
+classifier = load_model("C:/Users/dulha/Desktop/Github_Repos/emotion-music-player/main/emotion_classifier.h5")
+classes = ["Angry", "Happy", "Calm", "Sad", "Surprise"]
 expression = "None"
 
+# converts a base64 encoded image string to a numpy array
 def uri_to_cv2_img(uri):
-    encoded_data = uri.split(',')[1]
-    nparr = np.fromstring(encoded_data.decode('base64'), np.uint8)
-    img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+    header, encoded = uri.split(",", 1)
+    img = imread(io.BytesIO(base64.b64decode(encoded)))
     return img
 
+# determines the person's mood based on the image of the face
 def getExpression(uri):
-    frame = uri_to_cv2_img(uri)
-    frame = cv2.flip(frame, 1)
-    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    img = uri_to_cv2_img(uri)
+    frame = cv2.flip(img, 1)
+    gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+    print(gray)
     detected = haar_cascade.detectMultiScale(
         gray, scaleFactor=1.3, minNeighbors=5)
     expression = ""
@@ -48,6 +53,7 @@ def getExpression(uri):
             roi = roi_gray.astype("float")/255.0
             roi = img_to_array(roi)
             roi = np.expand_dims(roi, axis=0)
+
             predict = classifier.predict(roi)[0]
             label = classes[predict.argmax()]
             label_position = (x, y)
@@ -62,4 +68,7 @@ def getExpression(uri):
 
     # Convert to jpeg to pass to website feed
     ret2, jpeg = cv2.imencode('.jpg', frame)
+    
+    if expression == '':
+        expression = 'Calm'
     return expression

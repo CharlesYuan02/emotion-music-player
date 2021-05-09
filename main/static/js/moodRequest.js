@@ -6,19 +6,20 @@ Webcam.set({
 });
 Webcam.attach('#imageCapture');
 
-document.querySelector('#new_mood_button').addEventListener('click', function () {
+document.querySelector('#test').addEventListener('click', function () {
     getExpression();
 });    
 
 const getExpression = () => {
     Webcam.snap( image_uri => {
+        console.log(image_uri)
         fetch('/expression', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({"image_uri": image_uri})
+            body: JSON.stringify({image_uri: image_uri})
         }).then( response => {
             return response.json();
         }).then( res => {
