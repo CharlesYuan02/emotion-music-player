@@ -23,8 +23,8 @@ const getExpression = () => {
             return response.json();
         }).then( res => {
             const mood = res.mood;
-            console.log(mood)
-            // do other stuff with mood here if needed
+            document.querySelector('#status').innerHTML = `Current Mood: ${mood}`;
+            // do other stuff with mood here (e.g. determine the song on a mood change)
         });             
     });
 }
