@@ -1,10 +1,9 @@
-django==3.2.2
 tensorflow-cpu
 opencv-python-headless
 imutils==0.5.3
 imageio
-dj-database-url
-gunicorn
-psycopg2
-pytz
-whitenoise==3.3.1
+dj-database-url==0.5.0
+Django==3.1.2
+gunicorn==20.0.4
+psycopg2-binary==2.8.6
+whitenoise==5.2.0
