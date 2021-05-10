@@ -19,7 +19,7 @@ calm_poster = ["static/song_imgs/all_star.jpeg", "static/song_imgs/speed_of_ligh
 
 sad_playlist = ["Adele-Hello", "CelineDion-MyHeartWillGoOn", "GaryJules-MadWorld"];
 sad_title = ["Adele - Hello", "Celine Dion - My Heart Will Go On", "Gary Jules - Mad World"];
-sad_poster = ["static/song_imgs/hello.jpg", "static/song_imgs/my_heart_will_go_on.jpg", "static/song_imgs/mad_world.jpg"];
+sad_poster = ["static/song_imgs/hello.JPG", "static/song_imgs/my_heart_will_go_on.jpg", "static/song_imgs/mad_world.jpg"];
 
 ext = ".mp3";
 agent = navigator.userAgent.toLowerCase()
