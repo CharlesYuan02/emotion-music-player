@@ -1,4 +1,4 @@
 django==3.2.2
 tensorflow
-opencv-python-headless==4.2.0.34
+opencv-python==4.2.0.34
 imutils==0.5.3
