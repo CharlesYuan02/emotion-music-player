@@ -1,4 +1,4 @@
-let mood, audio, playbtn, nextbtn, prevbtn, mutebtn, title, poster, seekslider, volumeslider, seeking = false, seekto,
+let mood, audio, playbtn, nextbtn, prevbtn, mutebtn, seekslider, volumeslider, seeking = false, seekto,
     curtimetext, durtimetext, current_song, dir, playlist, ext, agent, repeat, setvolume, angry_playlist, angry_title,
     angry_poster, happy_playlist, happy_title, happy_poster, calm_playlist, calm_title, calm_poster, sad_playlist,
     sad_title, sad_poster, playlist_index;
