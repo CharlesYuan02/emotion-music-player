@@ -2,3 +2,4 @@ django==3.2.2
 tensorflow-cpu
 opencv-python-headless
 imutils==0.5.3
+imageio
