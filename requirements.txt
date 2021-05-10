@@ -1,4 +1,4 @@
 django==3.2.2
-tensorflow==2.0.0b1
+tensorflow
 opencv-python==4.4.0.42
 imutils==0.5.3
