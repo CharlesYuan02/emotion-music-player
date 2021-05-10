@@ -1,1 +1,1 @@
-web: python manage.py runserver
+web: gunicorn face_detector.wsgi --log-file -
