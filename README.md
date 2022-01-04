@@ -60,4 +60,4 @@ Big thanks to the organizers at TOHacks and everyone on Team AlphaHax.
 
 ## License
 
-This project is licensed under the MIT License - see the <a href="https://github.com/Chubbyman2/emotion-music-player/blob/main/LICENSE">LICENSE.MD</a> file for details
+This project is licensed under the MIT License - see the <a href="https://github.com/Chubbyman2/emotion-music-player/blob/main/LICENSE">LICENSE</a> file for details
